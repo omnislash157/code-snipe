@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "code-snipe"
+version = "0.1.0"
+description = "Codebase intelligence toolkit. Scan any repo, find real bugs, zero config."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "omnislash157"}
+]
+keywords = ["static-analysis", "codebase-intelligence", "bug-detection", "import-analysis", "code-quality"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
+]
+
+[project.urls]
+Homepage = "https://github.com/omnislash157/code-snipe"
+Issues = "https://github.com/omnislash157/code-snipe/issues"
+
+[project.scripts]
+snipe = "code_snipe.seraph.cli:main"
+snipe-scan = "code_snipe.seraph.cli:main"
+snipe-map = "code_snipe.cartographer:main"
+snipe-imports = "code_snipe.import_wiz:main"
+snipe-recon = "code_snipe.recon:main"
+snipe-hunt = "code_snipe.lightning.bolt_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["code_snipe*"]
