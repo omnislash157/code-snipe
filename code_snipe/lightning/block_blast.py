@@ -22,7 +22,7 @@ def find_python_blocks(source: str) -> list[CodeBlock]:
 
     try:
         tree = ast.parse(source)
-    except SyntaxError:
+    except (SyntaxError, ValueError):
         return find_blocks_regex(source)
 
     # Calculate line start positions

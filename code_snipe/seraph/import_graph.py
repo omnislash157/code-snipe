@@ -134,7 +134,7 @@ def _parse_python_imports(
     """
     try:
         tree = ast.parse(source)
-    except SyntaxError:
+    except (SyntaxError, ValueError):
         return
 
     for node in ast.walk(tree):

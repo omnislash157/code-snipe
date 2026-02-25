@@ -1105,7 +1105,7 @@ class CodeSmells:
             file_visitor.visit(tree)
             smells.extend(file_visitor.smells)
 
-        except SyntaxError:
+        except (SyntaxError, ValueError):
             # Can't parse, skip AST-based checks
             pass
 

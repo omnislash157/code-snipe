@@ -542,7 +542,7 @@ def _extract_imports(filepath: Path) -> FileImports:
         try:
             tree = ast.parse(content)
             imports = _extract_imports_ast(tree, lines)
-        except SyntaxError:
+        except (SyntaxError, ValueError):
             imports = _extract_imports_regex(lines, filepath)
     else:
         imports = _extract_imports_regex(lines, filepath)

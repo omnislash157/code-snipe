@@ -247,7 +247,7 @@ def _metrics_python(source: str) -> tuple[int, int, int, int, float]:
 
     try:
         tree = ast.parse(source)
-    except SyntaxError:
+    except (SyntaxError, ValueError):
         return loc, 0, 0, 0, 0.0
 
     import_count = 0

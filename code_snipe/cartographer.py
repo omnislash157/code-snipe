@@ -783,8 +783,8 @@ class Cartographer:
 
         try:
             tree = ast.parse(source)
-        except SyntaxError as e:
-            logger.warning(f"Syntax error in {filepath}: {e}")
+        except (SyntaxError, ValueError) as e:
+            logger.warning(f"Parse error in {filepath}: {e}")
             return {}
 
         # Get relative path for output
