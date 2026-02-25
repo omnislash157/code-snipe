@@ -481,7 +481,7 @@ def recon(
     elif mode == "search" and term:
         # CodeHound search
         hound = CodeHound(scan_path)
-        hound_result = hound.hunt(term, file_pattern="**/*.py", token_radius=100)
+        hound_result = hound.hunt(term, file_pattern="**/*.py")
 
         # Filter out archived files from hits
         result.codehound_hits = [h for h in hound_result.hits if not _is_ignored(h.relative_path)]

@@ -60,14 +60,22 @@ def main():
 
     # Co-occurrence mode
     if args.cooccur:
-        from .extras.storm_cooccurrence import storm_markdown
+        try:
+            from .extras.storm_cooccurrence import storm_markdown
+        except ImportError:
+            print("Co-occurrence analysis not available (extras not installed)", file=sys.stderr)
+            sys.exit(1)
         output = storm_markdown(bolt, term, file_pattern=args.glob, max_files=args.max_files)
         print(output)
         return
 
     # Stats mode
     if args.stats:
-        from .extras.stats import quick_stats
+        try:
+            from .extras.stats import quick_stats
+        except ImportError:
+            print("Stats mode not available (extras not installed)", file=sys.stderr)
+            sys.exit(1)
         stats = quick_stats(bolt, term)
         print(json.dumps(stats, indent=2))
         return
